@@ -3,39 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>WhatIsThisIn</title>
-
-
-  <script>
-    function getOptionChosen(val) {
-        switch (val) {
-            case "weather":
-
-            case "gas":
-
-            case "speed":
-
-            case "currency":
-
-        }
-
-    }
-  </script>
-
 </head>
-<body>
-<h1>WhatIsThisIn</h1>
+<!--Setting default value for option-->
+<body onload="getOptionChosen('weather')">
+<h1>WhatIsThisIn...</h1>
 
-<select name="options" onchange="testChange(this.value)">
-  <option value="weather">Weather</option>
-  <option value="gas">Gas Price</option>
-  <option value="speed">Speed Units</option>
-  <option value="currency">Currency Exchange</option>
-</select>
+<div class="optionBox">
+    <select name="options" id="optionChosen" onchange="getOptionChosen(this.value)">
+        <option value="weather">Weather</option>
+        <option value="gas">Gas Price</option>
+        <option value="speed">Speed Units</option>
+        <option value="currency">Currency Exchange</option>
+    </select>
+</div>
 
-<
+<!--Weather Components-->
+<div class="weatherOption" id="weatherComponents">
+    <form>
+        <input type="number" id="weatherNumber"></p>
+        <select name="weatherOptions" id="degreeChosen">
+            <option value="celsius">To C&#176;</option>
+            <option value="fahrenheit">To F&#176;</option>
+        </select>
+    </form>
+    <h2>Results:</h2>
+    <p id="resultConvertWeather"></p>
+</div>
+
+<!--Gas Prices NEED TO DO LATER WITH CURRENCY EXCHANGE-->
+<div class="gasOption" id="gasComponents">
+    <input type="number" id="gasNumber">
+    <select name="gasOptions" id="gasChosen">
+        <option value="litres">To Litres</option>
+        <option value="Gallons">To Gallons</option>
+    </select>
+    <h2>Results:</h2>
+    <p id="resultConvertGas"></p>
+</div>
+
+<!--Speed Units-->
+<div class="speedUnit" id="speedComponents">
+    <input type="number" id="speedNumber">
+    <select name="speedOptions" id="speedChosen">
+        <option value="kmh">To km/h</option>
+        <option value="mph">To mph</option>
+    </select>
+    <h1>Results:</h1>
+    <p id="resultConvertSpeed"></p>
+</div>
+
+<!--Currency Exchange-->
+<div class="currencyUnit" id="currencyComponents">
+    <p>CURRENCY</p>
+
+
+</div>
 
 
 
-<button type="button">Submit</button>
+<button type="button" onclick="convert()">Convert</button>
+<script src="script.js"></script>
 </body>
 </html>
