@@ -1,1 +1,3 @@
 # WhatIsThisIn...
+
+Simple online converter tool that provides services such as converting weather (Celsius and Fahrenheit), gas prices (Gallon and Litres), speed units (KM/H and MPH), and currency. 
