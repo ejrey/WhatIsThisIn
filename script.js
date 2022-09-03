@@ -85,14 +85,31 @@ function convert() {
     }
 }
 
-
-$(function(){
-    var $select = $(".currency");
-    for (i=1;i<=100;i++){
-        $select.append($('<option></option>').val(i).html(i))
-    }
-});
-
 function openCSV () {
     document.getElementById("currencyComponents").CSVToTable()
+}
+
+function getApiCall() {
+    const key = config.API_KEY;
+    // console.log(key)
+    let request = new XMLHttpRequest();
+    request.open("GET", "https://v6.exchangerate-api.com/v6/" + key + "/codes")
+    request.send();
+    request.onload = ()=>{
+        var isoCodes = (JSON.parse(request.response));
+        console.log(isoCodes.supported_codes)
+        populateList(isoCodes);
+        // console.log(isoCodes)
+    }
+
+
+}
+
+function populateList(isoCodes) {
+    // isoCodes.
+}
+
+function start() {
+    getOptionChosen('weather');
+    getApiCall();
 }

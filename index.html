@@ -5,7 +5,7 @@
     <title>WhatIsThisIn</title>
 </head>
 <!--Setting default value for option-->
-<body onload="getOptionChosen('weather')">
+<body onload="start()">
 <h1>WhatIsThisIn...</h1>
 
 <div class="optionBox">
@@ -54,16 +54,13 @@
 
 <!--Currency Exchange-->
 <div class="currencyUnit" id="currencyComponents">
-    <select class="currency">
-    </select>
-
+    <select name="currency" id="currencyOptions"></select>
 </div>
 
 
 
 <button type="button" onclick="convert()">Convert</button>
-<script src="script.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="//jquerycsvtotable.googlecode.com/files/jquery.csvToTable.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="config.js"></script>
 </body>
 </html>
