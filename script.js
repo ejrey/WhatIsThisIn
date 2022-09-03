@@ -27,6 +27,7 @@ function getOptionChosen(val) {
             gasDiv.style.display = 'none';
             speedDiv.style.display = 'none';
             currencyDiv.style.display = 'block';
+            getApiCall();
             break;
         default:
             break;
@@ -85,31 +86,23 @@ function convert() {
     }
 }
 
-function openCSV () {
-    document.getElementById("currencyComponents").CSVToTable()
-}
-
 function getApiCall() {
     const key = config.API_KEY;
-    // console.log(key)
     let request = new XMLHttpRequest();
     request.open("GET", "https://v6.exchangerate-api.com/v6/" + key + "/codes")
     request.send();
     request.onload = ()=>{
         var isoCodes = (JSON.parse(request.response));
-        console.log(isoCodes.supported_codes)
-        populateList(isoCodes);
-        // console.log(isoCodes)
+        for (let i = 0; i < isoCodes.supported_codes.length; i++) {
+            var option = document.createElement("option");
+            var select = document.getElementById("currencyOptions");
+            option.value = isoCodes.supported_codes[i][0] + ": " + isoCodes.supported_codes[i][1];
+            option.innerHTML = isoCodes.supported_codes[i][0] + ": " + isoCodes.supported_codes[i][1];
+            select.append(option);
+        }
     }
-
-
-}
-
-function populateList(isoCodes) {
-    // isoCodes.
 }
 
 function start() {
     getOptionChosen('weather');
-    getApiCall();
 }
