@@ -27,12 +27,13 @@ function getOptionChosen(val) {
             gasDiv.style.display = 'none';
             speedDiv.style.display = 'none';
             currencyDiv.style.display = 'block';
-            getApiCall();
+            getIsoCodes();
             break;
         default:
             break;
     }
 }
+
 
 function convert() {
     const option = document.getElementById("optionChosen").value;
@@ -79,14 +80,18 @@ function convert() {
             }
             break
         case "currency":
-            console.log(4);
+            const dollarValue = document.getElementById("currencyNumber").value;
+            const chosenCurrencyOne = document.getElementById("currencyOptionsOne").value.slice(0,3);
+            const chosenCurrencyTwo = document.getElementById("currencyOptionsTwo").value.slice(0,3);
+            getCurrencyExchange(chosenCurrencyOne, chosenCurrencyTwo, dollarValue);
+            // console.log(currencyValue);
             break
         default:
             break
     }
 }
 
-function getApiCall() {
+function getIsoCodes() {
     const key = config.API_KEY;
     let request = new XMLHttpRequest();
     request.open("GET", "https://v6.exchangerate-api.com/v6/" + key + "/codes")
@@ -94,12 +99,30 @@ function getApiCall() {
     request.onload = ()=>{
         var isoCodes = (JSON.parse(request.response));
         for (let i = 0; i < isoCodes.supported_codes.length; i++) {
-            var option = document.createElement("option");
-            var select = document.getElementById("currencyOptions");
-            option.value = isoCodes.supported_codes[i][0] + ": " + isoCodes.supported_codes[i][1];
-            option.innerHTML = isoCodes.supported_codes[i][0] + ": " + isoCodes.supported_codes[i][1];
-            select.append(option);
+            var optionOne = document.createElement("option");
+            var selectOne = document.getElementById("currencyOptionsOne");
+            optionOne.value = isoCodes.supported_codes[i][0] + ": " + isoCodes.supported_codes[i][1];
+            optionOne.innerHTML = isoCodes.supported_codes[i][0] + ": " + isoCodes.supported_codes[i][1];
+            selectOne.append(optionOne);
+
+            var optionTwo = document.createElement("option");
+            var selectTwo = document.getElementById("currencyOptionsTwo");
+            optionTwo.value = isoCodes.supported_codes[i][0] + ": " + isoCodes.supported_codes[i][1];
+            optionTwo.innerHTML = isoCodes.supported_codes[i][0] + ": " + isoCodes.supported_codes[i][1];
+            selectTwo.append(optionTwo);
         }
+    }
+}
+
+function getCurrencyExchange(chosenCurrencyOne, chosenCurrencyTwo, dollarValue) {
+    const key = config.API_KEY;
+    let request = new XMLHttpRequest();
+    request.open("GET", "https://v6.exchangerate-api.com/v6/" + key + "pair/" + chosenCurrencyOne + "/" + chosenCurrencyTwo + "/" + dollarValue);
+    request.send();
+    request.onload = ()=>{
+        var conversionResult = (JSON.parse(request.response));
+        console.log(conversionResult.conversion_result);
+        document.getElementById("resultOfCurrencyConvert").innerHTML = conversionResult.conversion_result.toFixed(2);
     }
 }
 
