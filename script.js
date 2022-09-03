@@ -83,5 +83,16 @@ function convert() {
         default:
             break
     }
+}
 
+
+$(function(){
+    var $select = $(".currency");
+    for (i=1;i<=100;i++){
+        $select.append($('<option></option>').val(i).html(i))
+    }
+});
+
+function openCSV () {
+    document.getElementById("currencyComponents").CSVToTable()
 }
