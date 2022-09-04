@@ -88,7 +88,7 @@ function convert() {
                         const litresPrice = document.getElementById("gasNumber").value;
                         const litre = 3.78541;
                         const priceInLitres = (litresPrice * conversionValue) / litre;
-                        document.getElementById("resultConvertGas").innerHTML = "$" + priceInLitres.toFixed(2);
+                        document.getElementById("resultConvertGas").innerHTML = "$" + priceInLitres.toFixed(2) + "/L";
                     }
                     break;
                 case "gallons":
@@ -101,7 +101,7 @@ function convert() {
                         const gallonsPrice = document.getElementById("gasNumber").value;
                         const gallons = 0.264172;
                         const priceInGallons = (gallonsPrice * conversionValue) / gallons;
-                        document.getElementById("resultConvertGas").innerHTML = "$" + priceInGallons.toFixed(2);
+                        document.getElementById("resultConvertGas").innerHTML = "$" + priceInGallons.toFixed(2) + "/g";
                     }
             }
             break
