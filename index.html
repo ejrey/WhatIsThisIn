@@ -1,68 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatIsThisIn</title>
 </head>
 
 <body onload="start()">
-<h1>WhatIsThisIn...</h1>
 
-<div class="optionBox">
-    <select name="options" id="optionChosen" onchange="getOptionChosen(this.value)">
-        <option value="weather">Weather</option>
-        <option value="gas">Gas Price</option>
-        <option value="speed">Speed Units</option>
-        <option value="currency">Currency Exchange</option>
-    </select>
-</div>
-
-<!--Weather Components-->
-<div class="weatherOption" id="weatherComponents">
-    <form>
-        <input type="number" id="weatherNumber"></p>
-        <select name="weatherOptions" id="degreeChosen">
-            <option value="celsius">To C&#176;</option>
-            <option value="fahrenheit">To F&#176;</option>
+<div class="main">
+    <h1>WhatIsThisIn...</h1>
+    <div class="optionBox">
+        <select name="options" id="optionChosen" onchange="getOptionChosen(this.value)">
+            <option value="weather">Weather</option>
+            <option value="gas">Gas Price</option>
+            <option value="speed">Speed Units</option>
+            <option value="currency">Currency Exchange</option>
         </select>
-    </form>
-    <h2>Results:</h2>
-    <p id="resultConvertWeather"></p>
+    </div>
+
+    <!--Weather Components-->
+    <div class="weatherOption" id="weatherComponents">
+        <form>
+            <input type="number" id="weatherNumber"></p>
+            <select name="weatherOptions" id="degreeChosen">
+                <option value="celsius">To C&#176;</option>
+                <option value="fahrenheit">To F&#176;</option>
+            </select>
+        </form>
+        <h2>Results:</h2>
+        <p id="resultConvertWeather"></p>
+    </div>
+
+    <!--Gas Prices-->
+    <div class="gasOption" id="gasComponents">
+        <input type="number" id="gasNumber">
+        <select name="gasOptions" id="gasChosen">
+            <option value="litres">To Litres</option>
+            <option value="gallons">To Gallons</option>
+        </select>
+        <h2>Results:</h2>
+        <p id="resultConvertGas"></p>
+    </div>
+
+    <!--Speed Units-->
+    <div class="speedUnit" id="speedComponents">
+        <input type="number" id="speedNumber">
+        <select name="speedOptions" id="speedChosen">
+            <option value="kmh">To km/h</option>
+            <option value="mph">To mph</option>
+        </select>
+        <h1>Results:</h1>
+        <p id="resultConvertSpeed"></p>
+    </div>
+
+    <!--Currency Exchange-->
+    <div class="currencyUnit" id="currencyComponents">
+        <select name="currencyOne" id="currencyOptionsOne"></select>
+        <input type="number" id="currencyNumber">
+        <h1>To</h1>
+        <select name="currencyTwo" id="currencyOptionsTwo"></select>
+        <br>
+        <h2>Results:</h2>
+        <p id="resultOfCurrencyConvert"></p>
+    </div>
+    <button type="button" onclick="convert()">Convert</button>
 </div>
 
-<!--Gas Prices-->
-<div class="gasOption" id="gasComponents">
-    <input type="number" id="gasNumber">
-    <select name="gasOptions" id="gasChosen">
-        <option value="litres">To Litres</option>
-        <option value="gallons">To Gallons</option>
-    </select>
-    <h2>Results:</h2>
-    <p id="resultConvertGas"></p>
-</div>
 
-<!--Speed Units-->
-<div class="speedUnit" id="speedComponents">
-    <input type="number" id="speedNumber">
-    <select name="speedOptions" id="speedChosen">
-        <option value="kmh">To km/h</option>
-        <option value="mph">To mph</option>
-    </select>
-    <h1>Results:</h1>
-    <p id="resultConvertSpeed"></p>
-</div>
-
-<!--Currency Exchange-->
-<div class="currencyUnit" id="currencyComponents">
-    <select name="currencyOne" id="currencyOptionsOne"></select>
-    <h1>To</h1>
-    <select name="currencyTwo" id="currencyOptionsTwo"></select>
-    <br>
-    <input type="number" id="currencyNumber">
-    <p id="resultOfCurrencyConvert"></p>
-</div>
-
-<button type="button" onclick="convert()">Convert</button>
 <script type="text/javascript" src="script.js"></script>
 <script type="text/javascript" src="config.js"></script>
 </body>
