@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@500;800&family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&display=swap" rel="stylesheet">
     <title>WhatIsThisIn</title>
 </head>
 
@@ -27,8 +29,9 @@
             <option value="celsius">To C&#176;</option>
             <option value="fahrenheit">To F&#176;</option>
         </select>
-        <h2>Results:</h2>
-        <p id="resultConvertWeather"></p>
+        <button type="button" onclick="convert()">Convert</button>
+        <h2 id="resultConvertWeather"></h2>
+<!--        <h3 id="resultConvertWeather"></h3>-->
     </div>
 
     <!--Gas Prices-->
@@ -38,8 +41,9 @@
             <option value="litres">To Litres</option>
             <option value="gallons">To Gallons</option>
         </select>
-        <h2>Results:</h2>
-        <p id="resultConvertGas"></p>
+        <button type="button" onclick="convert()">Convert</button>
+        <h2 id="resultConvertGas"></h2>
+<!--        <h3 id="resultConvertGas"></h3>-->
     </div>
 
     <!--Speed Units-->
@@ -49,8 +53,9 @@
             <option value="kmh">To km/h</option>
             <option value="mph">To mph</option>
         </select>
-        <h1>Results:</h1>
-        <p id="resultConvertSpeed"></p>
+        <button type="button" onclick="convert()">Convert</button>
+        <h2 id="resultConvertSpeed"></h2>
+<!--        <h3 id="resultConvertSpeed"></h3>-->
     </div>
 
     <!--Currency Exchange-->
@@ -59,11 +64,11 @@
         <input type="number" id="currencyNumber">
         <h1>To</h1>
         <select name="currencyTwo" id="currencyOptionsTwo"></select>
+        <button type="button" onclick="convert()">Convert</button>
         <br>
-        <h2>Results:</h2>
-        <p id="resultOfCurrencyConvert"></p>
+        <h2 id="resultOfCurrencyConvert"></h2>
+<!--        <h3 id="resultOfCurrencyConvert"></h3>-->
     </div>
-    <button type="button" onclick="convert()">Convert</button>
 </div>
 
 

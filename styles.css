@@ -2,16 +2,43 @@
     box-sizing: content-box;
     padding: 0;
     margin: 0;
+    font-family: 'Quicksand', sans-serif;
 }
 
 html, body{
     height: 100%;
-    background-color: #EDF2F4;
+    background-color: #000000;
 }
 
 h1, h2, h3, h4, h5, p, ul {
-    color: black;
+    color: white;
 }
+
+button {
+    background-color: white; /* Green */
+    color: black;
+    border: none;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type=number] {
+    /*width: 100%;*/
+    border: 2px black;
+    padding: 10px 24px;
+    border-radius: 4px;
+}
+
+select {
+    padding: 10px 24px;
+    border-radius: 4px;
+}
+
 
 .main {
     height: 100%;
@@ -25,6 +52,17 @@ h1, h2, h3, h4, h5, p, ul {
 .main h1 {
     margin-bottom: 1%;
 }
+
+.main .optionBox {
+    margin-bottom: 2%;
+}
+
+.main h2 {
+    margin-top: 5%;
+}
+
+
+
 
 
 

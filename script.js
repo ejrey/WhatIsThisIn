@@ -9,24 +9,36 @@ function getOptionChosen(val) {
             gasDiv.style.display = 'none';
             speedDiv.style.display = 'none';
             currencyDiv.style.display = 'none';
+            document.body.style.backgroundImage = "url('assets/weather2.gif')";
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundSize = "100%"
             break
         case "gas":
             weatherDiv.style.display = 'none';
             gasDiv.style.display = 'block';
             speedDiv.style.display = 'none';
             currencyDiv.style.display = 'none';
+            document.body.style.backgroundImage = "url('assets/gas.jpg')";
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundSize = "100%"
             break
         case "speed":
             weatherDiv.style.display = 'none';
             gasDiv.style.display = 'none';
             speedDiv.style.display = 'block';
             currencyDiv.style.display = 'none';
+            document.body.style.backgroundImage = "url('assets/speed2.jpg')";
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundSize = "100%"
             break
         case "currency":
             weatherDiv.style.display = 'none';
             gasDiv.style.display = 'none';
             speedDiv.style.display = 'none';
             currencyDiv.style.display = 'block';
+            document.body.style.backgroundImage = "url('assets/world.jpg')";
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundSize = "100%"
             getIsoCodes();
             break;
         default:
@@ -44,17 +56,17 @@ function convert() {
                 case "celsius":
                     const inCelsius = ((document.getElementById("weatherNumber").value - 32) * 5/9);
                     if (Number.isInteger(inCelsius)) {
-                        document.getElementById("resultConvertWeather").innerHTML = inCelsius;
+                        document.getElementById("resultConvertWeather").innerHTML = inCelsius + " \u00B0C ";
                     }else {
-                        document.getElementById("resultConvertWeather").innerHTML = inCelsius.toFixed(4);
+                        document.getElementById("resultConvertWeather").innerHTML = inCelsius.toFixed(4) + " \u00B0C ";
                     }
                     break;
                 case "fahrenheit":
                     const inFahrenheit = ((document.getElementById("weatherNumber").value * 9/5) + 32);
                     if (Number.isInteger(inFahrenheit)) {
-                        document.getElementById("resultConvertWeather").innerHTML = inFahrenheit;
+                        document.getElementById("resultConvertWeather").innerHTML = inFahrenheit + " \u00B0F ";
                     }else {
-                        document.getElementById("resultConvertWeather").innerHTML = inFahrenheit.toFixed(1);
+                        document.getElementById("resultConvertWeather").innerHTML = inFahrenheit.toFixed(1) + " \u00B0F ";
                     }
                     break;
                 default:
@@ -76,7 +88,7 @@ function convert() {
                         const litresPrice = document.getElementById("gasNumber").value;
                         const litre = 3.78541;
                         const priceInLitres = (litresPrice * conversionValue) / litre;
-                        document.getElementById("resultConvertGas").innerHTML = priceInLitres.toFixed(2);
+                        document.getElementById("resultConvertGas").innerHTML = "$" + priceInLitres.toFixed(2);
                     }
                     break;
                 case "gallons":
@@ -89,7 +101,7 @@ function convert() {
                         const gallonsPrice = document.getElementById("gasNumber").value;
                         const gallons = 0.264172;
                         const priceInGallons = (gallonsPrice * conversionValue) / gallons;
-                        document.getElementById("resultConvertGas").innerHTML = priceInGallons.toFixed(2);
+                        document.getElementById("resultConvertGas").innerHTML = "$" + priceInGallons.toFixed(2);
                     }
             }
             break
@@ -98,11 +110,11 @@ function convert() {
             switch (speedValue) {
                 case "kmh":
                     const inMPH = document.getElementById("speedNumber").value * 1.60934;
-                    document.getElementById("resultConvertSpeed").innerHTML = inMPH.toFixed(4);
+                    document.getElementById("resultConvertSpeed").innerHTML = inMPH.toFixed(1) + "km/h";
                     break;
                 case "mph":
                     const inKPH = document.getElementById("speedNumber").value / 1.60934;
-                    document.getElementById("resultConvertSpeed").innerHTML = inKPH.toFixed(4);
+                    document.getElementById("resultConvertSpeed").innerHTML = inKPH.toFixed(1) + "mph";
                     break;
                 default:
                     break;
@@ -151,7 +163,7 @@ function getCurrencyExchange(chosenCurrencyOne, chosenCurrencyTwo, dollarValue) 
     request.onload = ()=>{
         var conversionResult = (JSON.parse(request.response));
         console.log(conversionResult.conversion_result);
-        document.getElementById("resultOfCurrencyConvert").innerHTML = conversionResult.conversion_result.toFixed(2);
+        document.getElementById("resultOfCurrencyConvert").innerHTML = "$" + conversionResult.conversion_result.toFixed(2);
     }
 }
 
