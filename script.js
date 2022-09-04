@@ -62,7 +62,36 @@ function convert() {
             }
             break
         case "gas":
-            console.log(2);
+            const gasValue = document.getElementById("gasChosen").value;
+
+            const key = config.API_KEY;
+            switch (gasValue) {
+                case "litres":
+                    let litresRequest = new XMLHttpRequest();
+                    litresRequest.open("GET", "https://v6.exchangerate-api.com/v6/" + key + "pair/USD/CAD/1.00");
+                    litresRequest.send();
+                    litresRequest.onload = ()=>{
+                        var conversionResult = (JSON.parse(litresRequest.response));
+                        let conversionValue = conversionResult.conversion_result.toFixed(2);
+                        const litresPrice = document.getElementById("gasNumber").value;
+                        const litre = 3.78541;
+                        const priceInLitres = (litresPrice * conversionValue) / litre;
+                        document.getElementById("resultConvertGas").innerHTML = priceInLitres.toFixed(2);
+                    }
+                    break;
+                case "gallons":
+                    let gallonsRequest = new XMLHttpRequest();
+                    gallonsRequest.open("GET", "https://v6.exchangerate-api.com/v6/" + key + "pair/CAD/USD/1.00");
+                    gallonsRequest.send();
+                    gallonsRequest.onload = ()=>{
+                        var conversionResult = (JSON.parse(gallonsRequest.response));
+                        let conversionValue = conversionResult.conversion_result.toFixed(2);
+                        const gallonsPrice = document.getElementById("gasNumber").value;
+                        const gallons = 0.264172;
+                        const priceInGallons = (gallonsPrice * conversionValue) / gallons;
+                        document.getElementById("resultConvertGas").innerHTML = priceInGallons.toFixed(2);
+                    }
+            }
             break
         case "speed":
             const speedValue = document.getElementById("speedChosen").value;
