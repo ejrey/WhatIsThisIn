@@ -68,7 +68,7 @@ function convert() {
                         document.getElementById("resultConvertWeather").innerHTML = inCelsius.toFixed(4) + " \u00B0C ";
                     }
 
-                    randomFactAboutNumber(Math.floor((document.getElementById("weatherNumber").value)));
+                    randomFactAboutNumber(Math.floor(inCelsius));
 
                     break;
                 case "fahrenheit":
@@ -78,7 +78,7 @@ function convert() {
                     }else {
                         document.getElementById("resultConvertWeather").innerHTML = inFahrenheit.toFixed(1) + " \u00B0F ";
                     }
-                    randomFactAboutNumber(Math.floor((document.getElementById("weatherNumber").value)));
+                    randomFactAboutNumber(Math.floor(inFahrenheit));
                     break;
                 default:
                     break;
