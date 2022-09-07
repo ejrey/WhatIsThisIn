@@ -47,6 +47,13 @@ function getOptionChosen(val) {
 }
 
 
+async function randomFactAboutNumber(value) {
+
+    let response = await fetch("http://numbersapi.com/" + value);
+    let data = await response.text();
+    document.getElementById("randomFact").innerHTML = data;
+}
+
 function convert() {
     const option = document.getElementById("optionChosen").value;
     switch (option) {
@@ -60,6 +67,9 @@ function convert() {
                     }else {
                         document.getElementById("resultConvertWeather").innerHTML = inCelsius.toFixed(4) + " \u00B0C ";
                     }
+
+                    randomFactAboutNumber(Math.floor((document.getElementById("weatherNumber").value)));
+
                     break;
                 case "fahrenheit":
                     const inFahrenheit = ((document.getElementById("weatherNumber").value * 9/5) + 32);
@@ -68,6 +78,7 @@ function convert() {
                     }else {
                         document.getElementById("resultConvertWeather").innerHTML = inFahrenheit.toFixed(1) + " \u00B0F ";
                     }
+                    randomFactAboutNumber(Math.floor((document.getElementById("weatherNumber").value)));
                     break;
                 default:
                     break;
@@ -89,6 +100,7 @@ function convert() {
                         const litre = 3.78541;
                         const priceInLitres = (litresPrice * conversionValue) / litre;
                         document.getElementById("resultConvertGas").innerHTML = "$" + priceInLitres.toFixed(2) + "/L";
+                        randomFactAboutNumber(Math.floor(priceInLitres));
                     }
                     break;
                 case "gallons":
@@ -102,6 +114,7 @@ function convert() {
                         const gallons = 0.264172;
                         const priceInGallons = (gallonsPrice * conversionValue) / gallons;
                         document.getElementById("resultConvertGas").innerHTML = "$" + priceInGallons.toFixed(2) + "/g";
+                        randomFactAboutNumber(Math.floor(priceInGallons));
                     }
             }
             break
@@ -111,10 +124,12 @@ function convert() {
                 case "kmh":
                     const inMPH = document.getElementById("speedNumber").value * 1.60934;
                     document.getElementById("resultConvertSpeed").innerHTML = inMPH.toFixed(1) + "km/h";
+                    randomFactAboutNumber(Math.floor(inMPH));
                     break;
                 case "mph":
                     const inKPH = document.getElementById("speedNumber").value / 1.60934;
                     document.getElementById("resultConvertSpeed").innerHTML = inKPH.toFixed(1) + "mph";
+                    randomFactAboutNumber(Math.floor(inKPH));
                     break;
                 default:
                     break;
@@ -164,6 +179,7 @@ function getCurrencyExchange(chosenCurrencyOne, chosenCurrencyTwo, dollarValue) 
         var conversionResult = (JSON.parse(request.response));
         console.log(conversionResult.conversion_result);
         document.getElementById("resultOfCurrencyConvert").innerHTML = "$" + conversionResult.conversion_result.toFixed(2);
+        randomFactAboutNumber(Math.floor(conversionResult.conversion_result.toFixed(2)));
     }
 }
 
